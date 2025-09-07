@@ -4,7 +4,8 @@
 
 > 假设以邻接表表示法作为图的存储结构，设计图的深度优先遍历递归算法。
 
-以无向图为例。为了防止重边和自环，在遍历时需要额外申请空间用来记录顶点的访问状态。时间复杂度 $O(n+e)$，其中 $n$ 为顶点数，$e$ 为边数。
+以无向图为例。为了防止重边和自环，在遍历时需要额外申请空间用来记录顶点的访问状态。时间复杂度 $O(n+e)$，其中 $n$ 为顶点数，$e$
+为边数。
 
 ```cpp
 template<class T>
@@ -34,7 +35,8 @@ void ALGraph<T>::dfs() {
 
 ### T2
 
-> 试基于图的广度优先搜索策略编写一算法，判别以邻接表方式存储的有向图中是否存在由顶点 $v_i$ 到顶点 $v_j$ 的路径 $(i\ne j)$。
+> 试基于图的广度优先搜索策略编写一算法，判别以邻接表方式存储的有向图中是否存在由顶点 $v_i$ 到顶点 $v_j$
+> 的路径 $(i\ne j)$。
 
 从 $v_i$ 开始 bfs 遍历直到遇到 $v_j$ 为止。时间复杂度 $O(n+e)$
 
@@ -78,7 +80,8 @@ bool ALGraph<T>::findPathFromA2B(int a, int b) {
 
 > 采用邻接表作存储结构，编写一个判别无向图中任意两个给定的两个顶点之间是否存在一条长度为 $k$ 的简单路径的算法。
 
-从起点开始 dfs 并记录当前搜索路径中的结点数，当遇到终点并且路径长度为 k 表示找到了长度为 k 的简单路径。为了便于判定，我们记录路径上的点。时间复杂度 $O(n+e)$
+从起点开始 dfs 并记录当前搜索路径中的结点数，当遇到终点并且路径长度为 k 表示找到了长度为 k
+的简单路径。为了便于判定，我们记录路径上的点。时间复杂度 $O(n+e)$
 
 ```cpp
 template<class T>
@@ -188,8 +191,11 @@ vector<int> MGraph<T>::findDigraphLoop() {
 思路：
 
 - 同样按照 T4 的思路，分为判环与存环
-- 判环：判环相比于有向图增加了一个 trick，即在探索当前点 `now` 的可达点时，要排除当前点的上一级点 `before`。排除方法就是在 dfs 搜索时，多传递一个参数即可
-- 存环：存环相比于有向图需要改变一下策略，因为对于有向图，一旦遇到已经遇到的点 `v` 之后，直接从 `v` 点开始探索已标记的点即可；但是对于无向图这种策略是错误的，因为会有环之外的点被记录进去，解决方法就是：在 dfs 搜索记录路径时，采用 「**双端队列**」的形式，在探索到已探索的点时，将路径队列进行处理即可。处理方法就是对比队列的队头与队尾，不断弹出队头直到队头与队尾相等即可。
+- 判环：判环相比于有向图增加了一个 trick，即在探索当前点 `now` 的可达点时，要排除当前点的上一级点 `before`。排除方法就是在
+  dfs 搜索时，多传递一个参数即可
+- 存环：存环相比于有向图需要改变一下策略，因为对于有向图，一旦遇到已经遇到的点 `v` 之后，直接从 `v`
+  点开始探索已标记的点即可；但是对于无向图这种策略是错误的，因为会有环之外的点被记录进去，解决方法就是：在 dfs
+  搜索记录路径时，采用 「**双端队列**」的形式，在探索到已探索的点时，将路径队列进行处理即可。处理方法就是对比队列的队头与队尾，不断弹出队头直到队头与队尾相等即可。
 
 时间复杂度 $O(n^2)$
 
@@ -239,7 +245,7 @@ deque<int> MGraph<T>::findUndigraphLoop() {
 
 > 对下图所示的连通网，请分别用 $prim$ 算法和 $kruskal$ 算法构造该网的最小生成树。
 >
-> ![连通网](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408122131699.png)
+> ![连通网](https://cdn.dwj601.cn/images/202408122131699.png)
 
 - 均使用邻接矩阵进行存储，初始化图时，所有边权均初始化为无穷大 `INF`
 - $prim$ 算法时间复杂度 $O(n^2)$
@@ -382,19 +388,19 @@ vector<tuple<int, int, T>> MGraph<T>::kruskal() {
 
 ## 实验八
 
-实验代码：https://github.com/Explorer-Dong/DataStructure/blob/main/Code/chapter8_Graph/Experiment_8.cpp
+实验代码：https://github.com/Explorer-Dong/nnu-datastructure-lab/blob/main/Code/chapter8_Graph/Experiment_8.cpp
 
 ### T1
 
-![1](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408122134645.png)
+![1](https://cdn.dwj601.cn/images/202408122134645.png)
 
 ### T2
 
-![2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408122135828.png)
+![2](https://cdn.dwj601.cn/images/202408122135828.png)
 
 ### T3
 
-![3](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408122135248.png)
+![3](https://cdn.dwj601.cn/images/202408122135248.png)
 
 dijkstra
 
@@ -509,4 +515,4 @@ vector<tuple<int, int, vector<int>>> MGraph<T>::floyd() {
 
 ### T4
 
-![4](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408122135431.png)
+![4](https://cdn.dwj601.cn/images/202408122135431.png)

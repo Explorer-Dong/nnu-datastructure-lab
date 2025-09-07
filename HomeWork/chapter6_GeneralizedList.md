@@ -14,7 +14,7 @@
 >
 > $E=( (((a), b)), ((( ),(d)), (e f)))$
 
-<img src="https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408051643964.png" alt="image-20231027191232954" style="zoom: 50%;" />
+<img src="https://cdn.dwj601.cn/images/202408051643964.png" alt="image-20231027191232954" style="zoom: 50%;" />
 
 ### T2
 
@@ -45,7 +45,8 @@ bool GList<T>::same(GListNode<T>* pa, GListNode<T>* pb) {
 
 > 试编写一个算法，删除广义表中所有元素值为 $x$ 的原子结点。
 
-同样是遍历广义表，遇到原子值为 $x$ 的结点删除即可。与单链表删除结点的思路如出一辙，保留前驱，指向后继即可。需要注意的细节是单链表的前驱只有一种，而广义表的前驱有两种，因此在将前驱指向后继时需要特判一下前驱的类型。时间复杂度 $O(n)$
+同样是遍历广义表，遇到原子值为 $x$
+的结点删除即可。与单链表删除结点的思路如出一辙，保留前驱，指向后继即可。需要注意的细节是单链表的前驱只有一种，而广义表的前驱有两种，因此在将前驱指向后继时需要特判一下前驱的类型。时间复杂度 $O(n)$
 
 ```cpp
 template<class T>
@@ -75,7 +76,7 @@ void GList<T>::deleteAtom(GListNode<T>* pre, GListNode<T>* now, T x) {
 
 ## 实验六
 
-![第六章实验](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408051646734.png)
+![第六章实验](https://cdn.dwj601.cn/images/202408051646734.png)
 
 声明列表：由于需要支持「比较两个广义表是否相同」的逻辑，因此不得已将头结点暴露为公有变量。
 

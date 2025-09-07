@@ -2,7 +2,8 @@
 
 - 模版串 $s$ 长度为 $n$，模式串 $t$ 长度为 $m$，下标均从 $1$ 开始
 - `next[]` 数组简记为 `ne[]`
-- `ne[j]` 存储的信息为模式串中「以 `t[j]` 结尾的非平凡前缀和非平凡后缀的最大匹配长度」即 `t[1 : ne[j]] = t[j - ne[j] + 1 : j]`
+- `ne[j]` 存储的信息为模式串中「以 `t[j]` 结尾的非平凡前缀和非平凡后缀的最大匹配长度」即
+  `t[1 : ne[j]] = t[j - ne[j] + 1 : j]`
 
 ## 作业四
 
@@ -48,19 +49,19 @@ vector<int> getNext(const string& child) {
 
 最终计算可得：
 
-  （1）"ABCDEFG" = `0 0 0 0 0 0 0`
+（1）"ABCDEFG" = `0 0 0 0 0 0 0`
 
-  （2）"AAAAAAAA" = `0 1 2 3 4 5 6 7`
+（2）"AAAAAAAA" = `0 1 2 3 4 5 6 7`
 
-  （3）"BABBABAB" = `0 0 1 1 2 3 2 3`
+（3）"BABBABAB" = `0 0 1 1 2 3 2 3`
 
-  （4）"AAAAAAB" = `0 1 2 3 4 5 0`
+（4）"AAAAAAB" = `0 1 2 3 4 5 0`
 
-  （5）"ABCABDAAABC" = `0 0 0 1 2 0 1 1 1 2 3`
+（5）"ABCABDAAABC" = `0 0 0 1 2 0 1 1 1 2 3`
 
-  （6）"ABCABDABEABCABDABF" = `0 0 0 1 2 0 1 2 0 1 2 3 4 5 6 7 8 0 `
+（6）"ABCABDABEABCABDABF" = `0 0 0 1 2 0 1 2 0 1 2 3 4 5 6 7 8 0 `
 
-  （7）"ABBACXY" = `0 0 0 1 0 0 0`
+（7）"ABBACXY" = `0 0 0 1 0 0 0`
 
 ### T2
 
@@ -97,7 +98,9 @@ int countKMP(const string& s = "abccabaccaba", const string& t = "ab") {
 
 > 编写从串s中删除所有与串t相同的子串的算法
 
-匹配的逻辑相同，可以暴力也可以 KMP。至于删除，没有必要在模板串 s 上进行，可以重新构造一个答案串，构造方法比较简单，利用一个变量 $l$ 存储「不需要删除的子串的起始下标」，后续匹配成功时将 $s[l:j-m+1]$ 拼接到答案串并更新 $l=i+1$ 即可。
+匹配的逻辑相同，可以暴力也可以 KMP。至于删除，没有必要在模板串 s
+上进行，可以重新构造一个答案串，构造方法比较简单，利用一个变量 $l$
+存储「不需要删除的子串的起始下标」，后续匹配成功时将 $s[l:j-m+1]$ 拼接到答案串并更新 $l=i+1$ 即可。
 
 ```cpp
 string deleteKMP(const string& s = "abccabaccaba", const string& t = "ab") {
@@ -133,9 +136,12 @@ string deleteKMP(const string& s = "abccabaccaba", const string& t = "ab") {
 
 > 试给出求串s和串t的最大公共子串的算法
 
-注：对于求解 LongestCommomSubstring 一类的问题。本章涉及到的 KMP 算法仅适用于 $10^3$ 级别的数据量，更大的数据量需要使用别的算法，例如适用于 $10^4$ 级别的动态规划算法和 $10^5$ 级别的后缀数组 Suffix Array 算法。此处仅讨论前两个算法。
+注：对于求解 LongestCommomSubstring 一类的问题。本章涉及到的 KMP 算法仅适用于 $10^3$
+级别的数据量，更大的数据量需要使用别的算法，例如适用于 $10^4$ 级别的动态规划算法和 $10^5$ 级别的后缀数组 Suffix Array
+算法。此处仅讨论前两个算法。
 
-思路一：**枚举子串+KMP匹配**。不难想到我们枚举 $t$ 串的左右端点来 $O(m^2)$ 的枚举出其所有子串，接着对每一个枚举出来的子串和 $s$ 串进行 KMP 匹配统计。时间复杂度为 $O(m^2(n+m))$。
+思路一：**枚举子串+KMP匹配**。不难想到我们枚举 $t$ 串的左右端点来 $O(m^2)$
+的枚举出其所有子串，接着对每一个枚举出来的子串和 $s$ 串进行 KMP 匹配统计。时间复杂度为 $O(m^2(n+m))$。
 
 ```cpp
 vector<string> getLongestCommomSubstring_bf(const string& s = "abaadqbacaba", const string& t = "abac") {
@@ -167,7 +173,8 @@ vector<string> getLongestCommomSubstring_bf(const string& s = "abaadqbacaba", co
 - `dp[i][j] = dp[i - 1][j - 1] + 1`, $\text{if and only if s[i] == t[j]}$
 - `dp[i][j] = 0`, $\text{if and only if s[i] != t[j]}$
 
-评测 OJ：[https://www.nowcoder.com/practice/f33f5adc55f444baa0e0ca87ad8a6aac](https://www.nowcoder.com/practice/f33f5adc55f444baa0e0ca87ad8a6aac)
+评测
+OJ：[https://www.nowcoder.com/practice/f33f5adc55f444baa0e0ca87ad8a6aac](https://www.nowcoder.com/practice/f33f5adc55f444baa0e0ca87ad8a6aac)
 
 ```cpp
 vector<string> getLongestCommomSubstring_dp(const string& s = "abaadqbacaba", const string& t = "abac") {
@@ -210,7 +217,8 @@ vector<string> getLongestCommomSubstring_dp(const string& s = "abaadqbacaba", co
 
 ### T5
 
-> 编写一个函数来颠倒单词在字符串里的出现顺序。例如，把字符串"Do or do not, there is no try. "转换为"try．no is there not do, or Do"。假设所有单词都以空格为分隔符，标点符号也当做字母来对待。请对你的设计思路做出解释，并对你的解决方案的执行效率进行评估。
+> 编写一个函数来颠倒单词在字符串里的出现顺序。例如，把字符串"Do or do not, there is no try. "转换为"try．no is there not
+> do, or Do"。假设所有单词都以空格为分隔符，标点符号也当做字母来对待。请对你的设计思路做出解释，并对你的解决方案的执行效率进行评估。
 
 思路一：原地解决。先将原字符串左右翻转，然后对其中每一个单词进行左右翻转即可。时间复杂度为 $O(n)$，空间复杂度为 $O(1)$。
 
@@ -234,7 +242,8 @@ string reverseOrigin(string s = "Do or do not, there is no try.") {
 }
 ```
 
-思路二：利用栈结构做一个中转。我们扫描一遍原字符串，将扫描到的单词按顺序入栈，最后从栈顶开始拼接答案字符串即可。时间复杂度为 $O(n)$，空间复杂度为 $O(n)$。
+思路二：利用栈结构做一个中转。我们扫描一遍原字符串，将扫描到的单词按顺序入栈，最后从栈顶开始拼接答案字符串即可。时间复杂度为 $O(n)$
+，空间复杂度为 $O(n)$。
 
 ```cpp
 string reverseWithStack(const string& s = "Do or do not, there is no try.") {
@@ -267,9 +276,10 @@ string reverseWithStack(const string& s = "Do or do not, there is no try.") {
 
 ### T1
 
-![T1](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407292135068.png)
+![T1](https://cdn.dwj601.cn/images/202407292135068.png)
 
-上述作业中已经使用了改进的 KMP 算法进行匹配了，下面给出三种匹配代码。其中，未改进的 KMP 算法就是**在一次失配后不再继续匹配长度更短的前缀**，而是直接重新开始。
+上述作业中已经使用了改进的 KMP 算法进行匹配了，下面给出三种匹配代码。其中，未改进的 KMP 算法就是**在一次失配后不再继续匹配长度更短的前缀
+**，而是直接重新开始。
 
 BF 算法：
 
@@ -351,7 +361,7 @@ int optimizedKMP(const string& s = "abccabaccaba", const string& t = "aba") {
 
 ### T2
 
-![T2](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202407292135518.png)
+![T2](https://cdn.dwj601.cn/images/202407292135518.png)
 
 核心就是一个字符的循环移位操作，解密可以复用加密的算法，例如加密对应偏移 $dx$ 位，则解密对应偏移 $26-dx$ 位。
 

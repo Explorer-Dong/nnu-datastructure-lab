@@ -72,7 +72,7 @@ T SparseMatrix<T>::sumOfDiag() {
 
 ## 实验五
 
-![第五章实验](https://dwj-oss.oss-cn-nanjing.aliyuncs.com/images/202408031113663.png)
+![第五章实验](https://cdn.dwj601.cn/images/202408031113663.png)
 
 由于最终结果均为阵列形式，因此稀疏矩阵的输入顺序并不影响计算效率。
 

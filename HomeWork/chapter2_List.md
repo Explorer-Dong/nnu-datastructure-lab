@@ -389,7 +389,7 @@ int CircleList<T>::CountNode() {
 
 ## 实验二
 
-实验代码：[https://github.com/Explorer-Dong/DataStructure/blob/main/Code/chapter2/Experiment_2.cpp](https://github.com/Explorer-Dong/DataStructure/blob/main/Code/chapter2/Experiment_2.cpp)
+实验代码：[https://github.com/Explorer-Dong/nnu-datastructure-lab/blob/main/Code/chapter2/Experiment_2.cpp](https://github.com/Explorer-Dong/nnu-datastructure-lab/blob/main/Code/chapter2/Experiment_2.cpp)
 
 ### T1
 

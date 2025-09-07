@@ -542,7 +542,7 @@ bool DoubleStack4Queue<T, MaxSize>::Empty() {
 
 ## 实验三
 
-实验代码：https://github.com/Explorer-Dong/DataStructure/blob/main/Code/chapter3/Experiment_3.cpp
+实验代码：https://github.com/Explorer-Dong/nnu-datastructure-lab/blob/main/Code/chapter3/Experiment_3.cpp
 
 ### T1
 

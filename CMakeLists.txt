@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.26)
-project(DataStructure)
+project(nnu-datastructure-lab)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(DataStructure
+add_executable(nnu-datastructure-lab
         Code/chapter2_List/SeqList.h
         Code/chapter2_List/Node.h
         Code/chapter2_List/LinkList.h
